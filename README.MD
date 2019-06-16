@@ -125,6 +125,25 @@ from within `/myApp` run this command
 
 - Android studio provides very fast emulators for the latest android API's
 
+> `ionic start cameraApp `
+
+- requires `npm i cordova-res`
+
+[Failed to install 'cordova-sqlite-storage': CordovaError: Using "requireCordovaModule" to load non-cordova module "q" is not supported](https://github.com/xpbrew/cordova-sqlite-storage/issues/856#issuecomment-497298630)
+
+    > In my case the following sequence fixed that issue:
+    > 
+    > Remove ios platform `ionic cordova platform rm ios`
+    > Remove android platform `ionic cordova platform rm android`
+    > Remove sqlite storage plugin `ionic cordova plugin rm cordova-sqlite-storage`
+    > 
+    > Install latest sqlite storage npm package `npm i cordova-sqlite-storage@latest`
+    > Install sqlite storage plugin `ionic cordova plugin add cordova-sqlite-storage`
+    > Add ios platform `ionic cordova platform add ios`
+    > Add android platform `ionic cordova platform add android`
+    > 
+    > Alternatively run these commands as one line:
+    > `ionic cordova platform rm ios; ionic cordova platform rm android; ionic cordova plugin rm cordova-sqlite-storage; npm i cordova-sqlite-storage@latest && ionic cordova plugin add cordova-sqlite-storage; ionic cordova platform add ios; ionic cordova platform add android`
 
 
 
